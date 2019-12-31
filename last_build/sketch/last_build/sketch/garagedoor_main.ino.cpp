@@ -1,3 +1,6 @@
+#include <Arduino.h>
+#line 1 "/Users/karsten/Documents/00_Project_Support/10_arduino/Projects/191229_garagedoor/garagedoor_main.ino"
+#line 1 "/Users/karsten/Documents/00_Project_Support/10_arduino/Projects/191229_garagedoor/garagedoor_main.ino"
 /*
  * Garage Door Controller
  * Sends and receives values via MQTT

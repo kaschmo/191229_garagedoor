@@ -1,3 +1,6 @@
+#include <Arduino.h>
+#line 1 "/Users/karsten/Documents/00_Project_Support/10_arduino/Projects/191229_garagedoor/garagedoor_main.ino"
+#line 1 "/Users/karsten/Documents/00_Project_Support/10_arduino/Projects/191229_garagedoor/garagedoor_main.ino"
 /*
  * Garage Door Controller
  * Sends and receives values via MQTT
@@ -57,6 +60,25 @@ int garage_door_status; //1 closed, 0 open
  ESP8266WebServer httpServer(80);
  ESP8266HTTPUpdateServer httpUpdater;
  
+#line 60 "/Users/karsten/Documents/00_Project_Support/10_arduino/Projects/191229_garagedoor/garagedoor_main.ino"
+void setup_wifi();
+#line 86 "/Users/karsten/Documents/00_Project_Support/10_arduino/Projects/191229_garagedoor/garagedoor_main.ino"
+void callback(char* topic, byte* payload, unsigned int length);
+#line 122 "/Users/karsten/Documents/00_Project_Support/10_arduino/Projects/191229_garagedoor/garagedoor_main.ino"
+void relay_impulse();
+#line 131 "/Users/karsten/Documents/00_Project_Support/10_arduino/Projects/191229_garagedoor/garagedoor_main.ino"
+void send_status();
+#line 145 "/Users/karsten/Documents/00_Project_Support/10_arduino/Projects/191229_garagedoor/garagedoor_main.ino"
+void sendSensorValues();
+#line 183 "/Users/karsten/Documents/00_Project_Support/10_arduino/Projects/191229_garagedoor/garagedoor_main.ino"
+void reconnect();
+#line 208 "/Users/karsten/Documents/00_Project_Support/10_arduino/Projects/191229_garagedoor/garagedoor_main.ino"
+void update_sensors();
+#line 216 "/Users/karsten/Documents/00_Project_Support/10_arduino/Projects/191229_garagedoor/garagedoor_main.ino"
+void setup();
+#line 248 "/Users/karsten/Documents/00_Project_Support/10_arduino/Projects/191229_garagedoor/garagedoor_main.ino"
+void loop();
+#line 60 "/Users/karsten/Documents/00_Project_Support/10_arduino/Projects/191229_garagedoor/garagedoor_main.ino"
  void setup_wifi() {
    delay(10);
    // We start by connecting to a WiFi network
