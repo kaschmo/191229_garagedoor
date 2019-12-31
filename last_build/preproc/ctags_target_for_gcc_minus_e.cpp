@@ -215,6 +215,13 @@ void send_status()
     garage_door_status=digitalRead(RELAY_IN_PIN); //1 geschlossenes relay = zu
  }
 
+ //interrupt function for garage door relay change
+ void on_openclose() {
+     Serial.println("Garage Door Status changed - update sensors and send values");
+     update_sensors();
+     sendSensorValues();
+ }
+
  void setup() {
    // Status message will be sent to the PC at 115200 baud
    Serial.begin(115200, SERIAL_8N1, SERIAL_TX_ONLY);
@@ -222,20 +229,27 @@ void send_status()
    //INIT TIMERS
    timer_update_state_count=millis();
 
-   //initializing Pins
-   pinMode(RELAY_OUT_PIN, 0x01);
-   digitalWrite(RELAY_OUT_PIN, 0x1); //relay open - default
-   pinMode(RELAY_IN_PIN, 0x00);
+
 
    //INIT BME280
    //SDA, SCL
+   Serial.println("BME280 Init");
    Wire.begin(BME_SDA, BME_SCL);
    bool status;
    status = bme280.begin();
    if (!status) {
        Serial.println("Could not find a valid BME280 sensor, check wiring!");
+       delay(1000);
        while (1);
    }
+
+   //initializing Pins
+    Serial.println("Relay Init");
+   pinMode(RELAY_OUT_PIN, 0x01);
+   digitalWrite(RELAY_OUT_PIN, 0x1); //relay open - default
+   pinMode(RELAY_IN_PIN, 0x00);
+   //attachInterrupt(digitalPinToInterrupt(RELAY_IN_PIN), on_openclose, RISING);
+
    update_sensors();
 
    //WIFI and MQTT
