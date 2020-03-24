@@ -51,7 +51,7 @@
  float bme280_temp_offset = 1.5;
 
 //GarageDoor Status
-int garage_door_status; //1 closed, 0 open
+int garage_door_status; 
 
  //OTA
  ESP8266WebServer httpServer(80);
@@ -118,7 +118,7 @@ int garage_door_status; //1 closed, 0 open
     }
  }
 
-//closes relay for XX seconds to trigger door
+//closes relay for 1 seconds to trigger door
 void relay_impulse()
 {
     //Relay requires LOW on input to toggle 
@@ -212,13 +212,6 @@ void send_status()
    bme280_height=bme280.readAltitude(SEALEVELPRESSURE_HPA); //m
     garage_door_status=digitalRead(RELAY_IN_PIN); //1 geschlossenes relay = zu
  }
-
- //interrupt function for garage door relay change
- void on_openclose() {
-     Serial.println("Garage Door Status changed - update sensors and send values");
-     update_sensors();
-     sendSensorValues();
- }
  
  void setup() {
    // Status message will be sent to the PC at 115200 baud
@@ -246,7 +239,6 @@ void send_status()
    pinMode(RELAY_OUT_PIN, OUTPUT);
    digitalWrite(RELAY_OUT_PIN, HIGH); //relay open - default
    pinMode(RELAY_IN_PIN, INPUT);
-   //attachInterrupt(digitalPinToInterrupt(RELAY_IN_PIN), on_openclose, RISING);
 
    update_sensors(); 
  
@@ -264,9 +256,14 @@ void send_status()
      reconnect();
    }
    client.loop();
- 
+   
+   //use status checks instead of interrupt handling.
+   int garage_door_status_old = garage_door_status;
    update_sensors(); 
- 
+   if (garage_door_status != garage_door_status_old) {
+     //garage door status changed - send update
+     sendSensorValues();
+   }
    //http Updater for OTA
    httpServer.handleClient(); 
  

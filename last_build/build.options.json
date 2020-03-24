@@ -1,6 +1,6 @@
 {
   "builtInLibrariesFolders": "/Applications/Arduino.app/Contents/Java/libraries",
-  "customBuildProperties": "build.path=/Users/karsten/Documents/00_Project_Support/10_arduino/Projects/191229_garagedoor/last_build,build.warn_data_percentage=75,runtime.tools.xtensa-lx106-elf-gcc.path=/Users/karsten/Library/Arduino15/packages/esp8266/tools/xtensa-lx106-elf-gcc/1.20.0-26-gb404fb9-2,runtime.tools.mkspiffs.path=/Users/karsten/Library/Arduino15/packages/esp8266/tools/mkspiffs/0.1.2,runtime.tools.esptool.path=/Users/karsten/Library/Arduino15/packages/esp8266/tools/esptool/0.4.9",
+  "customBuildProperties": "build.path=/Users/karsten/Documents/00_Project_Support/10_arduino/Projects/191229_garagedoor/last_build,build.warn_data_percentage=75,runtime.tools.xtensa-lx106-elf-gcc.path=/Users/karsten/Library/Arduino15/packages/esp8266/tools/xtensa-lx106-elf-gcc/1.20.0-26-gb404fb9-2,runtime.tools.esptool.path=/Users/karsten/Library/Arduino15/packages/esp8266/tools/esptool/0.4.9,runtime.tools.mkspiffs.path=/Users/karsten/Library/Arduino15/packages/esp8266/tools/mkspiffs/0.1.2",
   "fqbn": "esp8266:esp8266:nodemcuv2:CpuFrequency=80,UploadSpeed=115200,FlashSize=4M3M",
   "hardwareFolders": "/Applications/Arduino.app/Contents/Java/hardware,/Users/karsten/Library/Arduino15/packages",
   "otherLibrariesFolders": "/Users/karsten/Documents/00_Project_Support/10_arduino/Projects/libraries",
